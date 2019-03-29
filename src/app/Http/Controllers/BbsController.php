@@ -34,3 +34,4 @@
            return view('bbs.index', ["bbs" => $bbs]); // bbs.indexにデータを渡す
        }
    }
+   
