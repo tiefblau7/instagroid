@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;// 追加！
 use Illuminate\Http\Request;// 追加！
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+//use Illuminate\Foundation\Auth;
 
 class LoginController extends Controller
 {
@@ -37,7 +39,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except(['logout', 'postLogout']);
     }
 
     /**
@@ -59,11 +61,19 @@ class LoginController extends Controller
     {
         $github_user = Socialite::driver('github')->user();
         $now = date("Y/m/d H:i:s");
+        $avatar = $github_user->getAvatar();
         $app_user = DB::select('select * from public.user where github_id = ?', [$github_user->user['login']]);
         if (empty($app_user)) {
-            DB::insert('insert into public.user (github_id, created_at, updated_at) values (?, ?, ?)', [$github_user->user['login'], $now, $now]);
+            DB::insert('insert into public.user (github_id, created_at, updated_at, avatar) values (?, ?, ?, ?)', [$github_user->user['login'], $now, $now, $avatar]);
         }
         $request->session()->put('github_token', $github_user->token);
         return redirect('github');
+     }
+
+     // ログアウト
+     public function postLogout()
+     {
+         \Auth::logout();
+         return redirect()->to('/');
      }
 }

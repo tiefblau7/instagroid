@@ -6,6 +6,7 @@
         <title>ログイン画面</title>
     </head>
     <body>
+        <a href="/home">ゲストログイン</a><br>
         <a href="/login/github">githubアカウントでログイン</a>
     </body>
 </html>

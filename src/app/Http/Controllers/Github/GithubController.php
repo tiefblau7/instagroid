@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Socialite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Model\POST;
 
 class GithubController extends Controller
 {
@@ -25,12 +26,18 @@ class GithubController extends Controller
                   'Authorization' => 'token ' . $token
               ]
           ]);
-
+          $github_id = $github_user->user['login'];
           $app_user = DB::select('select * from public.user where github_id = ?', [$github_user->user['login']]);
-
-          return view('github', [
+          $post = POST::orderBy('id', 'desc') -> simplePaginate(10); // 全データの取り出し
+          /**return view('inst.index', ["post" => $post]);*/
+          $favs = DB::table('fav')->get();
+          return view('inst.index', [
               'user' => $app_user[0],
+              'post' => $post,
+              'favs' => $favs,
+              'github_id' => $github_id,
               'nickname' => $github_user->nickname,
+              'avatar' => $github_user->getAvatar(), //アバター画像取得
               'token' => $token,
               'repos' => array_map(function($o) {
                   return $o->name;

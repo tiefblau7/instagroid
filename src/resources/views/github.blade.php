@@ -9,6 +9,13 @@
     <body>
         <form action="/user" method="post">
             {{ csrf_field() }}
+            {{ Auth::id() }}
+            @if( Auth::check() )
+                {{ あなたはログインできています。 }}
+            @endif
+            @guest
+              <p>ログインしていないユーザーに表示する。</p>
+            @endguest
 
             <div>お名前 : <input type="text" name="name" value="{{$user->name}}"></div>
 
@@ -18,7 +25,8 @@
             <input type="submit" value="Confirm">
         </form>
         <div>ようこそ{{ $nickname }}さん</div>
-        <div>あなたのトークンは{{ $token }}です</div>
+        <div>あなたのトークンは{{ $token }}です</div> <!-- 次行でアバターのアイコン確認。urlが変数に入っている。 -->
+        <div>アバターは<img src="{{ $avatar }}" title="avatar" width="50" height="50">です</div>
         <div>リポジトリ一覧</div>
         <ul>
         @foreach($repos as $repo)
