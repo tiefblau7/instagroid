@@ -12,7 +12,7 @@
    {
        // homeページの表示
        public function index(Request $request) {
-           $post = POST::orderBy('id', 'desc') -> simplePaginate(10); // 全データの取り出し
+           $post = Post::orderBy('id', 'desc') -> simplePaginate(10); // 全データの取り出し
            $favs = DB::table('fav')->get();
            $token = $request->session()->get('github_token', null);
            \Debugbar::info($favs);
