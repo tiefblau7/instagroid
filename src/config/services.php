@@ -15,11 +15,17 @@ return [
     */
 
     'github' => [
+        'client_id' => '82d0c6db345c3867207b',         // 追加！
+        'client_secret' => '98228852f9e64a084ecb097350e4564f20460a45', // 追加！
+        'redirect' => '/login/github/callback',
+    ],
+
+/*    'github' => [
         'client_id' => env('GITHUB_CLIENT_ID'),         // 追加！
         'client_secret' => env('GITHUB_CLIENT_SECRET'), // 追加！
         'redirect' => '/login/github/callback',
     ],
-
+*/
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
