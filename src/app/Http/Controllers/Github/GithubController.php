@@ -17,7 +17,7 @@ class GithubController extends Controller
           try {
               $github_user = Socialite::driver('github')->stateless()->userFromToken($token); // stateless()を挟んだ。
           } catch (\Exception $e) {
-              return redirect('/login/github/callback'); // login前にスラッシュを付けた。
+              return redirect('/login/github'); 
           }
 
           $client = new \GuzzleHttp\Client();
