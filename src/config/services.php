@@ -17,7 +17,7 @@ return [
     'github' => [
         'client_id' => '82d0c6db345c3867207b',         // 追加！
         'client_secret' => '98228852f9e64a084ecb097350e4564f20460a45', // 追加！
-        'redirect' => 'https://instagroid.herokuapp.com/login/github/callback',
+        'redirect' => '/login/github/callback',
     ],
 
 /*    'github' => [
