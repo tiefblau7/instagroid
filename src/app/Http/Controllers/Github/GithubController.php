@@ -15,7 +15,7 @@ class GithubController extends Controller
           $token = $request->session()->get('github_token', null);
 
           try {
-              $github_user = Socialite::driver('github')->userFromToken($token);
+              $github_user = Socialite::driver('github')->stateless()->userFromToken($token); // stateless()を挟んだ。
           } catch (\Exception $e) {
               return redirect('login/github');
           }
