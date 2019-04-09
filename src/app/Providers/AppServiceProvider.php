@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         * .envファイルの(APP_ENV=production)のとき、強制https化
         */
         if(\App::environment('production')) {
-          \URL::forceScheme('https');
+            \URL::forceScheme('https');
         }
+}
 }
