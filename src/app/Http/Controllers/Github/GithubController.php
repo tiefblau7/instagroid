@@ -15,15 +15,15 @@ class GithubController extends Controller
           $token = $request->session()->get('github_token', null);
 
           try {
-              $github_user = Socialite::driver('github')->stateless()->userFromToken($token); // stateless()を挟んだ。
+              $github_user = Socialite::driver('github')->userFromToken($token); // stateless()を挟んだ。
           } catch (\Exception $e) {
-              return redirect('/login/github'); 
+              return redirect('/login/github');
           }
 
           $client = new \GuzzleHttp\Client();
           $res = $client->request('GET', 'https://api.github.com/user/repos', [
               'headers' => [
-                  'Authorization' => 'token ' . $token
+                  'Authorization' => 'token ' . $token, 'http_errors' => false
               ]
           ]);
           $github_id = $github_user->user['login'];
