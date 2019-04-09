@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Socialite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Model\POST;
+use App\Model\Post;
 
 class GithubController extends Controller
 {
@@ -28,7 +28,7 @@ class GithubController extends Controller
           ]);
           $github_id = $github_user->user['login'];
           $app_user = DB::select('select * from public.user where github_id = ?', [$github_user->user['login']]);
-          $post = POST::orderBy('id', 'desc') -> simplePaginate(10); // 全データの取り出し
+          $post = Post::orderBy('id', 'desc') -> simplePaginate(10); // 全データの取り出し
           /**return view('inst.index', ["post" => $post]);*/
           $favs = DB::table('fav')->get();
           return view('inst.index', [
@@ -51,7 +51,7 @@ class GithubController extends Controller
         $user = Socialite::driver('github')->userFromToken($token);
 
         $client = new \GuzzleHttp\Client();
-        $res = $client->request('POST', 'https://api.github.com/repos/' . $user->user['login'] . '/' . $request->input('repo') . '/issues', [
+        $res = $client->request('Post', 'https://api.github.com/repos/' . $user->user['login'] . '/' . $request->input('repo') . '/issues', [
             'auth' => [$user->user['login'], $token],
             'json' => [
                 'title' => $request->input('title'),
