@@ -15,7 +15,7 @@
            $post = Post::orderBy('id', 'desc') -> simplePaginate(10); // 全データの取り出し
            $favs = DB::table('fav')->get();
            $token = $request->session()->get('github_token', null);
-           \Debugbar::info($favs);
+           //\Debugbar::info($favs);
            if($token){
              $user = Socialite::driver('github')->userFromToken($token);
              $github_id = $user->user['login'];
