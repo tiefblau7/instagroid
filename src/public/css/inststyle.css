@@ -6,6 +6,18 @@
   width: 100%;
 
 }
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size:1.6rem;
+}
+
+h2 {
+  font-size: 20px;
+  font-size: calc(2rem + ((1vw - 0.64rem) * 0.7143));
+}
+
 .form_area{
   padding-left: 30%;
   padding-right: 30%;
@@ -130,7 +142,7 @@
   justify-content: space-around;
 }
 .pro_avatar{
-  width: 20%;
+  width: 10%;
 }
 .pro_name{
   flex-grow: 3;
@@ -163,7 +175,8 @@
 
 .favme{
   text-align: center;
-  font-size: 200%;
+  font-size: 20px;
+  font-size: calc(2rem + ((1vw - 0.64rem) * 0.7143));
   padding-bottom: 5%;
 }
 
