@@ -43,15 +43,14 @@
            ]);
 
            if ($request->file('file')->isValid([])) {
-               $path = $request->file->store('public');
-               $filename = basename($path);
+               $image = base64_encode(file_get_contents($request->file->getRealPath()));
                $comment = $request->input('comment');
                $now = date("Y/m/d H:i:s");
                $token = $request->session()->get('github_token', null);
                $user = Socialite::driver('github')->userFromToken($token);
                $github_id = $user->user['login'];
                $avatar = $user->getAvatar();
-               Post::insert(["image" => $filename, "comment" => $comment, "created_at" => $now, "github_id" => $github_id, "avatar" => $avatar]); // データベーステーブルに投稿内容を入れる
+               Post::insert(["image" => $image, "comment" => $comment, "created_at" => $now, "github_id" => $github_id, "avatar" => $avatar]); // データベーステーブルに投稿内容を入れる
                return redirect('/home');
                //$post = POST::orderBy('id', 'desc') -> simplePaginate(10); // 全データの取り出し
 

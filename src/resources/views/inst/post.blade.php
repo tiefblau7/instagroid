@@ -18,7 +18,7 @@
     <input type="file" class="form-control" name="file">
     <br>
     コメント:<br>
-    <textarea name="comment" rows="4" cols="40"></textarea>
+    <textarea name="comment" class = "comment_area"></textarea>
     <br>
     <hr>
     {{ csrf_field() }}

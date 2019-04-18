@@ -14,16 +14,24 @@
 
 <div class = "space"></div>
 <!-- アバター表示 -->
-<div>
-  <img class = "pro_avatar" src="{{ $avatar }}" title="avatar">
-  <span class = "pro_name">{{$github_id}}</span>
-  <span class = "num">いいね合計数：{{$count}}</span>
+<div class = "profiles">
+  <div>
+    <img class = "pro_avatar" src="{{ $avatar }}" title="avatar">
+  </div>
+  <div>
+    <span class = "pro_name">{{$github_id}}</span>
+  </div>
+  <div>
+    <span class = "num">いいね合計数：{{$count}}</span>
+  </div>
 </div>
 @isset($post)
 <div class = "pro_photos">
 @foreach ($post as $d)
     <span class="photo_frame">
-        <img class="pro_photo" src="{{ asset('storage/' . $d->image) }}">
+      <span class="inner_photo">
+        <img class="pro_photo" src="data:image/png;base64,<?= $d->image ?>">
+      </span>
     </span>
 @endforeach
 </div>

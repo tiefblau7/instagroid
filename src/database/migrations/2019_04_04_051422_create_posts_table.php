@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
             $table->string('comment')->nullable();
             $table->string('github_id');
-            $table->string('image');
+            $table->text('image');
             $table->string('avatar');
             $table->timestamps();
         });

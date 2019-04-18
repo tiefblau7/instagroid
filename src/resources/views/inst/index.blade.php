@@ -20,7 +20,7 @@
   <div>
     <div>
       <h2 class = "editor"><a href="/profile/{{$d->github_id}}"><img class = "post_avatar_size" src="{{ $d -> avatar }}" title="avatar"></a>
-        <a href="/profile/{{$d->github_id}}">{{$d->github_id}}</a>さんの投稿</h2>
+        <a href="/profile/{{$d->github_id}}" class = "toukou">{{$d->github_id}}</a>さんの投稿</h2>
     </div>
 
     @isset($token)
@@ -36,9 +36,9 @@
       {{ $d->created_at }}
     </div><br>
     <div class ="photo">
-        <img class="photoarea" src="{{ asset('storage/' . $d->image) }}">
+        <img class="photoarea" src="data:image/png;base64,<?= $d->image ?>">
     </div><br>
-    <div class = "comment">{{ $d->comment}}</div>
+    <div class = "comment">{!! nl2br(e($d->comment)) !!}</div>
     <div class = "fav_list"><a href="/favlist/{{$d->id}}">この投稿をいいねしたユーザー</a></div>
     @isset($token)
     @if($favs -> where('favs', $d ->id)->count() && $favs -> where('github_id', $github_id) -> where('favs', $d ->id)->count())
