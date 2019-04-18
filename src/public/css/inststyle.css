@@ -41,8 +41,12 @@
 }
 .post_avatar{
   padding-left: 25%;
-  width : 10% ;
-  height: 10% ;
+  float: left;
+
+}
+.post_avatar_size{
+  width: 5%;
+  border-radius:50%;
 }
 
 .page_view{

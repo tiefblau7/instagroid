@@ -16,14 +16,13 @@
 <div class = "space"></div>
 @isset($post)
 @foreach ($post as $d)
-<div class = "rounded border cardsize">
-  <div class = "cardsizein">
+<div class = "cardsize">
+  <div>
     <div>
-      <h2 class = "editor"><a href="/profile/{{$d->github_id}}">{{$d->github_id}}</a>さんの投稿</h2>
+      <h2 class = "editor"><a href="/profile/{{$d->github_id}}"><img class = "post_avatar_size" src="{{ $d -> avatar }}" title="avatar"></a>
+        <a href="/profile/{{$d->github_id}}">{{$d->github_id}}</a>さんの投稿</h2>
     </div>
-    <div>
-      <img class = "post_avatar" src="{{ $d -> avatar }}" title="avatar">
-    </div>
+
     @isset($token)
     @if($d->github_id == $github_id)
       <div class = "delete_key">
