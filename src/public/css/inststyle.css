@@ -6,6 +6,11 @@
   width: 100%;
 
 }
+
+.delete_key{
+  
+}
+
 html {
   font-size: 62.5%;
 }
@@ -175,8 +180,7 @@ h2 {
 
 .favme{
   text-align: center;
-  font-size: 20px;
-  font-size: calc(2rem + ((1vw - 0.64rem) * 0.7143));
+
   padding-bottom: 5%;
 }
 

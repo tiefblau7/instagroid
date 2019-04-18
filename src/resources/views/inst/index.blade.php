@@ -27,7 +27,7 @@
     @if($d->github_id == $github_id)
       <div class = "delete_key">
           {{ Form::open(['method' => 'delete', 'route' => ['post.delete', $d->id]]) }}
-              {{ Form::submit('この記事を削除') }}
+              {{ Form::submit('削除') }}
           {{ Form::close() }}
       </div>
     @endif
@@ -55,7 +55,7 @@
       </div>
     @endif
     @endisset
-    <br><br>
+    <br><br><hr>
   </div>
 </div>
 @endforeach
