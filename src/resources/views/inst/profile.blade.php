@@ -15,16 +15,18 @@
 <div class = "space"></div>
 <!-- アバター表示 -->
 <div class = "profiles">
-  <div>
-    <img class = "pro_avatar" src="{{ $avatar }}" title="avatar">
+  <div class = "pro_avatar_before">
+    <div class = "avap">
+      <img class = "pro_avatar" src="{{ $avatar }}" title="avatar">
+    </div>
   </div>
-  <div>
-    <span class = "pro_name">{{$github_id}}</span>
+  <div class = "pro_name">
+    {{$github_id}}
   </div>
-  <div>
-    <span class = "num">いいね合計数：{{$count}}</span>
+  <div class = "num">
+    いいね合計数：{{$count}}
   </div>
-</div>
+</div><hr>
 @isset($post)
 <div class = "pro_photos">
 @foreach ($post as $d)

@@ -8,7 +8,7 @@
 }
 
 .delete_key{
-  
+
 }
 
 html {
@@ -145,19 +145,29 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  padding-top: 10%;
+  padding-bottom: 5%;
 }
+
+
 .pro_avatar{
-  width: 10%;
+  width: 100px;
+  height: auto;
+}
+.pro_avatar_before{
+  padding-left: 5%;
+  flex-grow: 2;
 }
 .pro_name{
-  flex-grow: 3;
-  font-size: 200%;
-
+  font-size: 20px;
+  font-size: calc(2rem + ((1vw - 0.64rem) * 0.7143));
+  flex-grow: 2;
 }
 
 .num{
-
-  font-size: 200%;
+  font-size: 20px;
+  font-size: calc(2rem + ((1vw - 0.64rem) * 0.7143));
+  flex-grow: 1;
 }
 
 .row{
