@@ -20,6 +20,8 @@
   z-index: 9999;
   position: fixed;
   width: 100%;
+  display: flex;
+
 }
 .sample {
   /**background-color: powderblue;*/
@@ -133,7 +135,7 @@
 .pro_name{
   flex-grow: 3;
   font-size: 200%;
-  
+
 }
 
 .num{
@@ -188,5 +190,6 @@
 .col{
   width: 100%;
   font-size: 120%;
+  white-space: nowrap;
   padding-top: 0.5%;
 }
