@@ -1,4 +1,4 @@
-# インスタグラムもどき
+# Instagroid
 
 ### 使い方
 https://instagroid.herokuapp.com/
