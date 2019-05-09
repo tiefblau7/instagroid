@@ -22,8 +22,10 @@
        }
 
        public function destroy(Request $request, $id) {
-
-           DB::table('fav')->where('favs', $id)->delete();
+           $token = $request->session()->get('github_token', null);
+           $user = Socialite::driver('github')->userFromToken($token);
+           $github_id = $user->user['login'];
+           DB::table('fav')->where('favs', $id)->where('github_id', $github_id)->delete();
            return redirect('/home');
        }
    }
